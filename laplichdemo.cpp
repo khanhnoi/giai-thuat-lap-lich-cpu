@@ -175,6 +175,7 @@ void input(struct data inputDataProcess[],int inputNumberProcess)
     struct data temp;
     cout<<"------------------------------------\n";
     cout << "Note: Thong Tin Nhap bao gom: [Ten Tien Trinh] + [Thoi Gian Xuat Hien] + [Thoi Gian Thuc Hien] \n";
+    cout << "VD: ( p1 0 24 ) ( p2 1 3) (p3 2 3)\n";
     cout << "VD: ( p1 0 11 ) ( p2 3 7) (p3 8 19) (p4 13 4) (p5 17 9)\n";
      cout<<"------------------------------------\n";
     for(int i=0;i<inputNumberProcess;i++)
@@ -408,8 +409,8 @@ void priorityFinding(struct data inputDataProcess[],int inputNumberProcess) {
 
   }
   for (i = 0; i < inputNumberProcess; i++) {
-    inputDataProcess[i].priority -= 1000;
-    inputDataProcess[i].appearTime -= 1000;
+    inputDataProcess[i].priority -= 999;
+    inputDataProcess[i].appearTime -= 999;
   } // Thiet lap lai gia tri ban dau cua cac tien trinh
   priorityDisplayTable(inputDataProcess,inputNumberProcess);
 }
@@ -583,7 +584,8 @@ int pop()
 
 void check(struct data inputDataProcess[],int inputNumberProcess) 
 {
-  while (inputDataProcess[stt].appearTime <= timeCount && stt < inputNumberProcess) //coz all tthe process must b checked b4 pushing the presently executed process into the queue
+	//khi tien moi xuat hien thi no de day vao hang doi
+  while (inputDataProcess[stt].appearTime <= timeCount && stt < inputNumberProcess) //tat ca qua trinh phai duoc kiem tra  day qua trinh duoc thuc hien hien tai vao hang doi
   {
     numberProcessQueue++;
     push(stt++);
